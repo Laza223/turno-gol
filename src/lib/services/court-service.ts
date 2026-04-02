@@ -1,11 +1,10 @@
 import { prisma } from "@/lib/prisma";
-import type { Court } from "@prisma/client";
 
 export class CourtService {
   /**
    * Crear nueva cancha (mismos campos que Onboarding)
    */
-  static async createCourt(complexId: string, data: any): Promise<Court> {
+  static async createCourt(complexId: string, data: any) {
      const count = await prisma.court.count({ where: { complexId } });
      return await prisma.court.create({
        data: {
@@ -24,7 +23,7 @@ export class CourtService {
   /**
    * Editar cancha existente
    */
-  static async updateCourt(complexId: string, courtId: string, data: any): Promise<Court> {
+  static async updateCourt(complexId: string, courtId: string, data: any) {
      const existing = await prisma.court.findUnique({ where: { id: courtId } });
      if (!existing || existing.complexId !== complexId) {
         throw new Error("Cancha no encontrada");
@@ -46,7 +45,7 @@ export class CourtService {
   /**
    * Activar / Desactivar cancha
    */
-  static async toggleActive(complexId: string, courtId: string, isActive: boolean): Promise<Court> {
+  static async toggleActive(complexId: string, courtId: string, isActive: boolean) {
      const existing = await prisma.court.findUnique({ where: { id: courtId } });
      if (!existing || existing.complexId !== complexId) {
         throw new Error("Cancha no encontrada");

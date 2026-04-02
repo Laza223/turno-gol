@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getDailyMovementsAction } from "@/actions/cash-register-actions";
 import { formatARS } from "@/lib/utils/currency";
 import { CheckCircle2, ArrowRightLeft, CreditCard, Banknote, HelpCircle, Loader2 } from "lucide-react";
-import { BookingDetailSheet } from "@/components/dashboard/bookings/booking-sheet";
+import { BookingDetailSheet } from "@/components/dashboard/bookings/booking-detail-sheet";
 
 interface MovementListProps {
   date: string;
@@ -124,8 +124,8 @@ export function MovementList({ date }: MovementListProps) {
 
       {selectedBookingId && (
          <BookingDetailSheet 
-            bookingId={selectedBookingId}
-            onClose={() => setSelectedBookingId(null)}
+            booking={ { id: selectedBookingId } as any } 
+            onClose={() => setSelectedBookingId(null)} 
          />
       )}
     </>

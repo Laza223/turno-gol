@@ -13,11 +13,14 @@ import { Loader2 } from "lucide-react";
 interface OnlineBookingFormProps {
   complex: any;
   court: any;
-  bookingDate: string;
-  startTime: string;
+  bookingDate?: string;
+  startTime?: string;
   endTime: string;
   price: number;
   depositAmount: number | null;
+  initialCourtId?: string;
+  initialDate?: string;
+  initialTime?: string;
 }
 
 export function OnlineBookingForm({
@@ -27,7 +30,10 @@ export function OnlineBookingForm({
   startTime,
   endTime,
   price,
-  depositAmount
+  depositAmount,
+  initialCourtId,
+  initialDate,
+  initialTime
 }: OnlineBookingFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -54,8 +60,8 @@ export function OnlineBookingForm({
          courtId: court.id,
          customerName: name,
          customerPhone: phone,
-         bookingDate,
-         startTime,
+         bookingDate: initialDate || bookingDate || "",
+         startTime: initialTime || startTime || "",
          endTime
        });
 
@@ -82,11 +88,11 @@ export function OnlineBookingForm({
           </div>
           <div className="flex justify-between">
             <span className="text-gray-500">Fecha:</span>
-            <span className="font-semibold text-navy capitalize">{formatBookingDate(bookingDate)}</span>
+            <span className="font-semibold text-navy capitalize">{formatBookingDate(initialDate || bookingDate || "")}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-gray-500">Horario:</span>
-            <span className="font-semibold text-navy">{startTime} a {endTime}</span>
+            <span className="font-semibold text-navy">{initialTime || startTime} a {endTime}</span>
           </div>
           <div className="pt-2 mt-2 border-t border-gray-200 flex justify-between items-center">
             <span className="text-navy font-bold">Total a pagar:</span>

@@ -34,13 +34,13 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
   }
 
   // Calculate endTime (always strictly 60 minutes after startTime in TurnoGol)
-  const [hourStr, minStr] = time.split(":");
-  const h = parseInt(hourStr);
-  const m = parseInt(minStr);
+  const [hourStr, minStr] = (time as string).split(":");
+  const h = parseInt(hourStr || "0");
+  const m = parseInt(minStr || "0");
   const endH = h + 1;
   const endTime = `${endH.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
 
-  const price = getCourtPrice({ price: court.price, priceWeekend: court.priceWeekend }, date);
+  const price = getCourtPrice({ price: court.price, priceWeekend: court.priceWeekend }, date as string);
 
   let depositAmount = null;
   if (complex.depositEnabled) {
@@ -62,8 +62,9 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
           <OnlineBookingForm 
             complex={complex as any}
             court={court as any}
-            bookingDate={date}
-            startTime={time}
+            initialCourtId={searchParams.courtId || ""}
+            initialDate={searchParams.date || ""}
+            initialTime={searchParams.time || ""}
             endTime={endTime}
             price={price}
             depositAmount={depositAmount}

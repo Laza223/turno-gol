@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Wallet, Banknote, CreditCard, Landmark } fro
 import { Button } from "@/components/ui/button";
 import { formatARS } from "@/lib/utils/currency";
 import { formatBookingDate } from "@/lib/utils/dates";
-import { addDays, subDays, parse } from "date-fns";
+import { addDays, subDays, parse, format } from "date-fns";
 import { PinGuard } from "@/components/guards/pin-guard";
 import { MovementList } from "./movement-list";
 
@@ -21,13 +21,13 @@ export function CashRegisterView({ summary, currentDate }: CashRegisterViewProps
 
   const handlePrevDay = () => {
      const dateObj = parse(currentDate, "yyyy-MM-dd", new Date());
-     const prev = formatBookingDate(subDays(dateObj, 1), "yyyy-MM-dd") || addDays(dateObj, -1).toISOString().substring(0, 10);
+     const prev = format(subDays(dateObj, 1), "yyyy-MM-dd");
      router.push(`${pathname}?date=${prev}`);
   };
 
   const handleNextDay = () => {
      const dateObj = parse(currentDate, "yyyy-MM-dd", new Date());
-     const next = addDays(dateObj, 1).toISOString().substring(0, 10);
+     const next = format(addDays(dateObj, 1), "yyyy-MM-dd");
      router.push(`${pathname}?date=${next}`);
   };
 

@@ -173,7 +173,7 @@ export class FixedSlotService {
         });
 
         // Intentar llenar la proxima semana
-        const dateTarget = this.getNextOccurrenceDates(fs.dayOfWeek, 1)[0];
+        const dateTarget = this.getNextOccurrenceDates(fs.dayOfWeek, 1)[0] as string;
         const overlap = await tx.booking.findFirst({
            where: {
               courtId: fs.courtId,
@@ -191,8 +191,8 @@ export class FixedSlotService {
                    customerId: fs.customerId,
                    fixedSlotId: fs.id,
                    bookingDate: dateTarget,
-                   startTime: fs.startTime,
-                   endTime: fs.endTime,
+                   startTime: (fs.startTime || "00:00").substring(0, 5),
+                   endTime: (fs.endTime || "00:00").substring(0, 5),
                    status: "confirmed",
                    source: "fixed",
                    price: getCourtPrice(fs.court, dateTarget),

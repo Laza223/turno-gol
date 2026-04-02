@@ -1,0 +1,21 @@
+src/app/(public)/[slug]/book/page.tsx(38,22): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/app/(public)/[slug]/book/page.tsx(39,22): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/app/(public)/[slug]/book/page.tsx(62,12): error TS2741: Property 'court' is missing in type '{ complex: any; initialCourtId: string; initialDate: string; initialTime: string; endTime: string; price: number; depositAmount: number | null; }' but required in type 'OnlineBookingFormProps'.
+src/components/dashboard/cash-register/cash-register-view.tsx(24,58): error TS2554: Expected 1 arguments, but got 2.
+src/components/dashboard/courts/court-form.tsx(24,5): error TS2322: Type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }, any, { ...; }>' is not assignable to type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }, any, { name: string; playerCount: number; surface: "sintetico" | ... 1 more ... | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>' is not assignable to type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }>'.
+      Type 'boolean | undefined' is not assignable to type 'boolean'.
+        Type 'undefined' is not assignable to type 'boolean'.
+src/components/public/court-list.tsx(3,10): error TS2305: Module '"@prisma/client"' has no exported member 'Booking'.
+src/components/public/court-list.tsx(3,19): error TS2305: Module '"@prisma/client"' has no exported member 'Court'.
+src/lib/services/fixed-slot-service.ts(193,20): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/fixed-slot-service.ts(198,51): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/report-service.ts(121,29): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/report-service.ts(122,29): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.

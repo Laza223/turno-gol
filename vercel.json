@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/generate-fixed-bookings",
       "schedule": "0 6 * * 1"
+    },
+    {
+      "path": "/api/cron/check-subscriptions",
+      "schedule": "0 3 * * *"
     }
   ]
 }

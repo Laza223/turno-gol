@@ -1,0 +1,6 @@
+src/actions/settings-actions.ts(5,32): error TS2307: Cannot find module '@/lib/auth/session' or its corresponding type declarations.
+src/actions/settings-actions.ts(7,30): error TS2307: Cannot find module '@/lib/types/actions' or its corresponding type declarations.
+src/app/(dashboard)/settings/page.tsx(2,32): error TS2307: Cannot find module '@/lib/auth/session' or its corresponding type declarations.
+src/components/dashboard/settings/settings-view.tsx(14,26): error TS2307: Cannot find module '@/components/ui/textarea' or its corresponding type declarations.
+src/components/dashboard/settings/settings-view.tsx(404,24): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/lib/services/settings-service.ts(2,36): error TS2307: Cannot find module '@/lib/utils/crypto' or its corresponding type declarations.

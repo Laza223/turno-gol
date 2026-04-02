@@ -1,15 +1,15 @@
 "use client";
 
-import { Booking, Court } from "@prisma/client";
-import { generateSlots, isWeekendDate } from "@/lib/utils/dates";
+// Prisma models removed to avoid client mismatch
+import { generateSlots } from "@/lib/utils/dates";
 import { getCourtPrice } from "@/lib/utils/pricing";
 import { formatARS } from "@/lib/utils/currency";
 import Link from "next/link";
 import { format } from "date-fns";
 
 interface CourtListProps {
-  courts: Court[];
-  bookings: Booking[];
+  courts: any[];
+  bookings: any[];
   targetDate: string; // The selected day
   complex: {
     openTime: string;

@@ -1,0 +1,42 @@
+.next/types/validator.ts(207,31): error TS2344: Type 'typeof import("C:/Users/User/OneDrive/Documentos/GitHub/turno-gol/src/app/api/customers/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/customers/[id]">'.
+  Types of property 'GET' are incompatible.
+    Type '(req: Request, { params }: { params: { id: string; }; }) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+src/app/(dashboard)/reports/page.tsx(24,20): error TS2322: Type '{ children: Element; complexId: string; purpose: string; }' is not assignable to type 'IntrinsicAttributes & PinGuardProps'.
+  Property 'complexId' does not exist on type 'IntrinsicAttributes & PinGuardProps'.
+src/app/(public)/[slug]/book/page.tsx(38,22): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/app/(public)/[slug]/book/page.tsx(39,22): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/components/dashboard/cash-register/cash-register-view.tsx(24,58): error TS2554: Expected 1 arguments, but got 2.
+src/components/dashboard/cash-register/movement-list.tsx(7,10): error TS2724: '"@/components/dashboard/bookings/booking-sheet"' has no exported member named 'BookingDetailSheet'. Did you mean 'BookingSheet'?
+src/components/dashboard/courts/court-form.tsx(24,5): error TS2322: Type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }, any, { ...; }>' is not assignable to type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }, any, { name: string; playerCount: number; surface: "sintetico" | ... 1 more ... | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>' is not assignable to type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }>'.
+      Type 'boolean | undefined' is not assignable to type 'boolean'.
+        Type 'undefined' is not assignable to type 'boolean'.
+src/components/dashboard/courts/court-form.tsx(67,43): error TS2345: Argument of type '(data: CreateCourtSchema) => void' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }'.
+      Type 'FieldValues' is missing the following properties from type '{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }': name, playerCount, surface, isRoofed, and 2 more.
+src/components/dashboard/reports/reports-view.tsx(4,58): error TS2307: Cannot find module '@/components/ui/tabs' or its corresponding type declarations.
+src/components/dashboard/reports/reports-view.tsx(8,27): error TS2307: Cannot find module '@/lib/utils/format' or its corresponding type declarations.
+src/components/dashboard/reports/reports-view.tsx(61,64): error TS2322: Type '(v: number) => any' is not assignable to type 'Formatter<ValueType, NameType> & ((value: ValueType, name: NameType, item: TooltipPayloadEntry, index: number, payload: TooltipPayload) => ReactNode | [...])'.
+  Type '(v: number) => any' is not assignable to type 'Formatter<ValueType, NameType>'.
+    Types of parameters 'v' and 'value' are incompatible.
+      Type 'ValueType | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+src/components/public/court-list.tsx(3,10): error TS2305: Module '"@prisma/client"' has no exported member 'Booking'.
+src/components/public/court-list.tsx(3,19): error TS2305: Module '"@prisma/client"' has no exported member 'Court'.
+src/lib/services/court-service.ts(2,15): error TS2305: Module '"@prisma/client"' has no exported member 'Court'.
+src/lib/services/fixed-slot-service.ts(193,20): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/fixed-slot-service.ts(198,51): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/report-service.ts(121,29): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/lib/services/report-service.ts(122,29): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
