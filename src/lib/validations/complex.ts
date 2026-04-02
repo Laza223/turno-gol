@@ -54,9 +54,7 @@ export type OnboardingComplexSchema = z.infer<typeof onboardingComplexSchema>;
 // ==========================================
 
 export const onboardingScheduleSchema = z.object({
-  slotStartMinute: z.enum(["0", "15", "30"], {
-    message: "Minuto de inicio inválido",
-  }).transform(Number),
+  slotStartMinute: z.union([z.literal(0), z.literal(15), z.literal(30)]),
 });
 
 export type OnboardingScheduleSchema = z.infer<typeof onboardingScheduleSchema>;

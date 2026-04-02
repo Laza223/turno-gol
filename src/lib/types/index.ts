@@ -193,6 +193,11 @@ export interface GridSlotData {
 export interface GridCourtData {
   courtId: string;
   courtName: string;
+  isActive: boolean;
+  playerCount: number;
+  surface: string;
+  price: number;
+  priceWeekend: number | null;
   slots: GridSlotData[];
 }
 

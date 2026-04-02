@@ -1,0 +1,12 @@
+src/actions/onboarding-actions.ts(298,32): error TS2339: Property 'errors' does not exist on type 'ZodError<unknown>'.
+src/app/onboarding/steps/step-courts.tsx(57,5): error TS2322: Type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }, any, { ...; }>' is not assignable to type 'Resolver<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }, any, { name: string; playerCount: number; surface: "sintetico" | ... 1 more ... | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }>' is not assignable to type 'ResolverOptions<{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; price: number; isRoofed?: boolean | undefined; priceWeekend?: number | null | undefined; }>'.
+      Type 'boolean | undefined' is not assignable to type 'boolean'.
+        Type 'undefined' is not assignable to type 'boolean'.
+src/app/onboarding/steps/step-courts.tsx(163,34): error TS2345: Argument of type '(data: { name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }'.
+      Type 'FieldValues' is missing the following properties from type '{ name: string; playerCount: number; surface: "sintetico" | "natural" | "cemento"; isRoofed: boolean; price: number; priceWeekend: number | null; }': name, playerCount, surface, isRoofed, and 2 more.
+src/app/onboarding/steps/step-schedule.tsx(24,51): error TS2322: Type 'string' is not assignable to type 'number'.
+  Type 'string' is not assignable to type 'number'.

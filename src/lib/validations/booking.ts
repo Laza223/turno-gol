@@ -27,6 +27,31 @@ export const createBookingSchema = z.object({
 
 export type CreateBookingSchema = z.infer<typeof createBookingSchema>;
 
+export const createOnlineBookingSchema = z.object({
+  complexId: z.string().uuid("Complejo inválido"),
+  courtId: z.string().uuid("Cancha inválida"),
+  customerName: z
+    .string()
+    .min(2, "El nombre debe tener al menos 2 caracteres")
+    .max(100, "El nombre es demasiado largo"),
+  customerPhone: z
+    .string()
+    .min(8, "Teléfono inválido")
+    .max(20, "Teléfono inválido")
+    .regex(/^[\d\s\-+()]+$/, "Teléfono inválido"),
+  bookingDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Fecha inválida"),
+  startTime: z
+    .string()
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Hora inválida"),
+  endTime: z
+    .string()
+    .regex(/^([01]\d|2[0-3]):([0-5]\d)$/, "Hora inválida"),
+});
+
+export type CreateOnlineBookingSchema = z.infer<typeof createOnlineBookingSchema>;
+
 export const blockSlotSchema = z.object({
   courtId: z.string().uuid("Cancha inválida"),
   bookingDate: z
