@@ -140,7 +140,7 @@ export class BookingService {
   static async createOnlineBooking(
     complexId: string,
     input: CreateBookingInput
-  ): Promise<BookingWithRelations> {
+  ): Promise<{ booking: BookingWithRelations, checkoutUrl?: string }> {
     // 1. Validar ocupación
     const existing = await prisma.booking.findFirst({
       where: {
@@ -159,6 +159,9 @@ export class BookingService {
     if (existing) {
       throw new Error("Este horario ya no está disponible.");
     }
+
+    const complex = await prisma.complex.findUnique({ where: { id: complexId } });
+    if (!complex) throw new Error("Complejo no encontrado");
 
     // 2. Control de Cliente Bloqueado
     const normalizedPhone = input.customerPhone.replace(/\D/g, "");
@@ -181,7 +184,7 @@ export class BookingService {
     if (!court) throw new Error("Cancha no encontrada");
     const price = getCourtPrice(court, input.bookingDate);
 
-    return await prisma.$transaction(async (tx) => {
+    const finalBooking = await prisma.$transaction(async (tx) => {
       if (!customer) {
         customer = await tx.customer.create({
           data: {
@@ -229,6 +232,36 @@ export class BookingService {
 
       return booking as unknown as BookingWithRelations;
     });
+
+    let checkoutUrl;
+
+    if (complex.depositEnabled && complex.mpConnected && complex.mpAccessToken) {
+       // Refresh token safely if expires
+       await import("@/lib/mercadopago/oauth").then(v => v.MercadoPagoOAuth.refreshAccessToken(complex as any));
+
+       let depositAmount;
+       if (complex.depositType === "percentage" && complex.depositValue) {
+         depositAmount = Math.round((price * complex.depositValue) / 100);
+       } else if (complex.depositType === "fixed" && complex.depositValue) {
+         depositAmount = complex.depositValue;
+       }
+
+       if (depositAmount) {
+         const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+         const mpClient = await import("@/lib/mercadopago/client").then(v => v.MercadoPagoClient);
+         checkoutUrl = await mpClient.createCheckoutPreference(
+            complex.mpAccessToken,
+            finalBooking as any,
+            depositAmount,
+            { name: input.customerName, phone: input.customerPhone },
+            court.name,
+            appUrl,
+            complex.slug
+         );
+       }
+    }
+
+    return { booking: finalBooking, checkoutUrl };
   }
 
   /**

@@ -45,11 +45,11 @@ export async function createBookingAction(
 
 export async function createOnlineBookingAction(
   input: z.infer<typeof createOnlineBookingSchema>
-): Promise<ActionResult<{ id: string }>> {
+): Promise<ActionResult<{ id: string, checkoutUrl?: string }>> {
   try {
     const validatedData = createOnlineBookingSchema.parse(input);
 
-    const booking = await BookingService.createOnlineBooking(
+    const { booking, checkoutUrl } = await BookingService.createOnlineBooking(
       validatedData.complexId,
       {
         courtId: validatedData.courtId,
@@ -64,7 +64,7 @@ export async function createOnlineBookingAction(
       }
     );
 
-    return { success: true, data: { id: booking.id } };
+    return { success: true, data: { id: booking.id, checkoutUrl } };
   } catch (error) {
     if (error instanceof z.ZodError) {
        return { success: false, error: "Datos del formulario inválidos" };
